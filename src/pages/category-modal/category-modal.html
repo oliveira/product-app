@@ -1,0 +1,24 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-buttons start>
+      <button (click)="close()">
+        <ion-icon name="close">
+        </ion-icon>
+      </button>
+    </ion-buttons>
+    <ion-title>Adicionar Categoria</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+<ion-content padding>
+<ion-list>
+  <ion-item>
+    <ion-label floating>Nome</ion-label>
+    <ion-input [(ngModel)]="category.nome"></ion-input>
+  </ion-item>
+</ion-list>
+
+<button ion-button block (click)="save()">Salvar</button>
+</ion-content>

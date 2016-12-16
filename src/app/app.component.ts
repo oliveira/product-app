@@ -5,6 +5,8 @@ import { StatusBar, Splashscreen } from 'ionic-native';
 import { HomePage } from '../pages/home/home';
 import { Product } from '../pages/product/product';
 import { Category } from '../pages/category/category';
+
+import { CategoryModalPage } from '../pages/category-modal/category-modal';
 import { CategoryService } from './../providers/category-service'
 import { ProductService } from './../providers/product-service'
 

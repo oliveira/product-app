@@ -7,18 +7,13 @@
 
 <ion-content>
 
-  <ion-list *ngFor="let c of categories">
-    <ion-item-sliding>
-      <ion-item>
-        {{c.nome}}
-      </ion-item>
-
+  <ion-list>
+    <ion-item-sliding  *ngFor="let c of categories">
+      <ion-item>{{c.nome}}</ion-item>
       <ion-item-options>
-
-        <button ion-button large color="primary">
+        <button ion-button large color="primary" (click)="updateCategory(c)">
           <ion-icon name="create"></ion-icon>
         </button>
-
         <button ion-button large color="danger" (click)="removeCategory(c)">
           <ion-icon name="trash"></ion-icon>
         </button>
@@ -28,7 +23,7 @@
   </ion-list>
 
   <ion-fab right bottom>
-    <button ion-fab color="danger">
+    <button ion-fab color="danger" (click)="addCategory()">
       <ion-icon name="add"></ion-icon>
     </button>
   </ion-fab>

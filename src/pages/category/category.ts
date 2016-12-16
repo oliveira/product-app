@@ -1,6 +1,7 @@
 import { Component} from '@angular/core';
-import { NavController, AlertController } from 'ionic-angular';
-import { CategoryService } from './../../providers/category-service'
+import { NavController, AlertController, ModalController } from 'ionic-angular';
+import { CategoryService } from './../../providers/category-service';
+import { CategoryModalPage } from './../category-modal/category-modal';
 
 @Component({
   selector: 'page-category',
@@ -10,7 +11,8 @@ import { CategoryService } from './../../providers/category-service'
 export class Category {
 
   categories: Array<any>;
-  constructor(public navCtrl: NavController, private categoryService: CategoryService, public alertCtrl: AlertController) {
+  constructor(public navCtrl: NavController, private categoryService: CategoryService,
+    public alertCtrl: AlertController, public modalCtrl: ModalController) {
     this.findAll();
   }
 
@@ -38,11 +40,32 @@ export class Category {
                   this.findAll();
                 }
               }, (error) => {
-                console.log('Erro ao deletar categoria', error)
-              })
+                console.log('Erro ao deletar categoria', error);
+              });
           }
         }
       ]
     });
+    alert.present();
+  }
+
+  addCategory() {
+    let modal = this.modalCtrl.create(CategoryModalPage);
+    modal.onDidDismiss(() => {
+      this.findAll();
+    });
+    modal.present();
+  }
+
+  updateCategory(category) {
+    let modal = this.modalCtrl.create(CategoryModalPage, {
+      category: category
+    });
+
+    modal.onDidDismiss(() => {
+      this.findAll();
+    });
+
+    modal.present();
   }
 }
